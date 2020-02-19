@@ -1,3 +1,4 @@
+
 package com.example.demo;
 
 import java.util.HashMap;
@@ -38,3 +39,4 @@ public class RestController {
 	@Autowired
 	Connect2Table ct;
 }
+
