@@ -18,7 +18,18 @@ import com.example.demo.repo.Connect2Table;
 public class RestController {
 	
 	@RequestMapping(value = "/", produces = "application/json")
-	public Map<String, String> helloUser(@RequestParam String x) {
+	public Map<String, String> helloUser(@RequestParam  String x) {
+		HashMap<String, String> result = new HashMap<>();
+		result.put("username", x);
+		
+		List<Login> ll = ct.connect();
+		System.out.println("~~~~controller = = = "+ll);
+		
+		result.put("name", "~~~~");
+		return result;
+	}
+	@RequestMapping(value = "/pj", produces = "application/json")
+	public Map<String, String> helloUser1(@RequestParam  String x) {
 		HashMap<String, String> result = new HashMap<>();
 		result.put("username", x);
 		
