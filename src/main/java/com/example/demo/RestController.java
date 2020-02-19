@@ -41,8 +41,8 @@ public class RestController {
 		for(int i= 0; i<ll.size(); i++) {
 			Object[]oo=(Object[]) ll.get(i);
 		result.put("id",(oo[0].toString()));
-		result.put("name",oo[0].toString());
-		result.put("password",oo[0].toString());
+		result.put("name",oo[1].toString());
+		result.put("password",oo[2].toString());
 		}
 		return	ResponseEntity.status(HttpStatus.ACCEPTED).header("MyResponseHeader", "MyValue").body(result);
 
