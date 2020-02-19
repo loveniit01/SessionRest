@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -22,22 +23,29 @@ public class RestController {
 		HashMap<String, String> result = new HashMap<>();
 		result.put("username", x);
 		
-		List<Login> ll = ct.connect();
+		List<Object> ll = ct.connect();
 		System.out.println("~~~~controller = = = "+ll);
 		
-		result.put("name", "~~~~");
+		
 		return result;
 	}
 	@RequestMapping(value = "/pj", produces = "application/json")
-	public Map<String, String> helloUser1(@RequestParam  String x) {
+	public ResponseEntity<?> helloUser1(@RequestParam  String x) {
+		
 		HashMap<String, String> result = new HashMap<>();
 		result.put("username", x);
 		
-		List<Login> ll = ct.connect();
+		List<Object> ll = ct.connect();
 		System.out.println("~~~~controller = = = "+ll);
 		
-		result.put("name", "~~~~");
-		return result;
+		for(int i= 0; i<ll.size(); i++) {
+			Object[]oo=(Object[]) ll.get(i);
+		result.put("id",(oo[0].toString()));
+		result.put("name",oo[0].toString());
+		result.put("password",oo[0].toString());
+		}
+		return	ResponseEntity.status(HttpStatus.ACCEPTED).header("MyResponseHeader", "MyValue").body(result);
+
 	}
 
 	@RequestMapping("/logout")
