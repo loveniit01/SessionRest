@@ -22,9 +22,9 @@ public class RestController {
 
 	@RequestMapping("/logout")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void logout(HttpSession session) {
-		
-		session.invalidate();
+	public void logout() {
+System.out.println("== ho ja na logout");		
+//		session.invalidate();
 	}
 
 }
